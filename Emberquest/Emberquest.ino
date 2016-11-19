@@ -128,13 +128,13 @@ void updateJump()
         p1x = p1x;
         p1y = p1y - 1; 
       }
-if boolean homescreen = true;
+if (boolean homescreen = true);
   {
-      boolean jump = false;
+      (boolean jump = false);
   }
   else
   {
-    boolean jump = true;
+    (boolean jump = true);
   }
 
 if (jump > 0)
