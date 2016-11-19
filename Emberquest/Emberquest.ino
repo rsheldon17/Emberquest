@@ -86,55 +86,55 @@ void drawLevelA()
  
 void updateJump()
 {
-  // Jumping is only possible (boolean jump = true) in the mazes and not on the homescreen
+  // Jumping is only possible (boolean playerJump = true) in the mazes and not on the homescreen
   // There are 6 phases to jumping
   // This code doesn't really work for the maze right now, just wanted to get the movement down, will update later
   {
-      if (int jump = 0)
+      if (jump == 0)
       {
         p1x = p1x;
         p1y = p1y; 
-        if (boolean jump = true)
+        if (boolean playerJump = true)
         {
-          int jump = 1;
+          jump == 1;
         }
       }
-      if (int jump = 1)
+      if (jump == 1)
       {
         p1x = p1x;
         p1y = p1y + 1; 
-        int jump = 2;
+        jump == 2;
       }
-       if (int jump = 2)
+       if (jump == 2)
       {
         p1x = p1x;
         p1y = p1y + 1; 
-        int jump = 3;
+        jump == 3;
       }
-       if (int jump = 3)
+       if (jump == 3)
       {
         p1x = p1x + 1;
         p1y = p1y; 
-        int jump = 4;
+        jump == 4;
       }
-       if (int jump = 4)
+       if (jump == 4)
       {
         p1x = p1x - 1;
         p1y = p1y; 
-        int jump = 5;
+        jump == 5;
       }
-       if (int jump = 5)
+       if (jump == 5)
       {
         p1x = p1x;
         p1y = p1y - 1; 
       }
 if (boolean homescreen = true);
   {
-      (boolean jump = false);
+    boolean playerJump = false;
   }
-  else
+if (boolean homescreen = false);
   {
-    (boolean jump = true);
+    boolean playerJump = true;
   }
 
 if (jump > 0)
@@ -167,11 +167,11 @@ void drawPlayer()
 {
   DrawPx(p1x,p1y,Red);
   if (boolean homescreen = true)
-    int p1x = 7
-    int p1y = 3
+    p1x = 7;
+    p1y = 3;
   if (boolean homescreen = false)
-    int p1x = 1
-    int p1y = 0
+    p1x = 1;
+    p1y = 0;
 }
 void updatePlayer()
 {
