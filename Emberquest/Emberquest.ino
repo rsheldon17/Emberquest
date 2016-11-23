@@ -12,6 +12,7 @@ void setup()
 
 void loop() 
  {
+  {
   CheckButtonsPress();
   updatePlayer();
   if(Button_Up)
@@ -28,6 +29,7 @@ void loop()
         }
      else 
      {
+       homescreen = false;
       if (ReadPx(p1x,(p1y + 1))!=Blue)
           {
             if (p1y < 8)    // Out of bounds
@@ -72,6 +74,7 @@ void loop()
     }
     else
       {
+        homescreen = false;
         if (ReadPx((p1x-1),p1y)!=White) 
          {
            if (p1x > 0) 
@@ -97,6 +100,7 @@ void loop()
     }
     else
       {
+        homescreen = false;
         if (ReadPx((p1x+1),p1y)!=White) 
          {
            if (p1x < 8) 
@@ -110,10 +114,17 @@ void loop()
  DisplaySlate();
  delay(100);
  ClearSlate();
+  }
   {
     if (homescreen == true)
     {
       drawHome();
+    }
+  }
+  {
+    if (homescreen == false)
+    {
+      drawLevelA();
     }
   }
  }
@@ -227,18 +238,19 @@ void updatePlayer()
     {
       if (ReadPx(p1x,p1y)==Yellow) // If touching yellow, go to Level A screen
          {
-            ClearSlate();
+            Tone_Start(ToneC6, 100);
+            delay(100);
             drawLevelA();
-            DisplaySlate();
-            drawPlayer();
-            p1x = 1;
-            p1y = 1;
+            p1x = 0;
+            p1y = 0;
          }
     }
     else
     {
       if (ReadPx(p1x,p1y)==Blue) // If touching blue, go to winning screen
          {
+            Tone_Start(ToneC6, 100);
+            delay(100);
             ClearSlate();
             drawWinning();
             delay(3000);
