@@ -1,25 +1,17 @@
-/*
- Emberquest by Rose Sheldon
- */
+
 #include <MeggyJrSimple.h>
-int jump = 0;
-//boolean homescreen = true;
-//boolean playerjump = false;
+boolean homescreen = true;
 int direction = 0;
-int p1y;
-int p1x;
+int p1y = 1;
+int p1x = 0;
 void setup() 
  {
     MeggyJrSimpleSetup();
  }
 
-//MeggyJr_CustomColors.pde
 void loop() 
  {
-//  boolean homescreen = true;
   drawHome();
-  p1x = 1;
-  p1y = 0;
   drawPlayer();
   updatePlayer();
   DisplaySlate();
@@ -44,7 +36,7 @@ void drawHome()
     DrawPx(7,0,Yellow);
     DrawPx(7,7,Yellow);
     DisplaySlate();
-    boolean homescreen = true;
+    homescreen = true;
  }
   
 void drawLevelA()
@@ -68,15 +60,15 @@ void drawLevelA()
     DrawPx(3,6,White);
     DrawPx(4,6,White);
     DrawPx(0,7,Blue);
-    DrawPx(0,0,Yellow); 
     DisplaySlate();
-    boolean homescreen = false;
+    homescreen = false;
  }
 
 void drawPlayer()
 {
   DrawPx(p1x,p1y,Red);
   updatePlayer();
+  DisplaySlate();
 }
 void updatePlayer()
 {
@@ -91,182 +83,151 @@ void updatePlayer()
     if(Button_Right)
       direction = 90;
   }
+  
     if (direction == 0)
     {
-    if (boolean homescreen = true)
+    if (homescreen == true)
       {
         if (p1y < 7)             // Corrects for out of bounds
           {
-            if (ReadPx(p1x,(p1y + 1))==Green)
-              {
-              }
-            else
+            if (ReadPx(p1x,(p1y + 1))!=Green)
               {
                 p1y++;
               }
-            if (ReadPx(p1x,(p1y + 1))==Orange)
-              {
-              }
-            else
+            if (ReadPx(p1x,(p1y + 1))!=Orange)
               {
                 p1y++;
               }
-               if (ReadPx(p1x,(p1y + 1))==Violet)
-              {
-              }
-            else
+               if (ReadPx(p1x,(p1y + 1))!=Violet)
               {
                 p1y++;
               }
-               if (ReadPx(p1x,(p1y + 1))==Blue)
-              {
-              }
-            else
+               if (ReadPx(p1x,(p1y + 1))!=Blue)
               {
                 p1y++;
+              }
+                if (ReadPx(p1x,(p1y + 1))==Yellow)
+              {
+                ClearSlate();
+                drawLevelA();
+                drawPlayer();
+                p1x = 1;
+                p1y = 1;
+                DisplaySlate();
               }
             }
-         else
-            {
-            }
-          }
-          drawPlayer();
           DisplaySlate();
       }
+      }
+      
     if (direction == 180)
-   {
-    if (boolean homescreen = true)
-    {
+  {
+    if (homescreen == true)
+  {
         if (p1y > 1)             // Corrects for out of bounds
           {
-            if (ReadPx(p1x,(p1y - 1))==Green)
-              {
-              }
-            else
+            if (ReadPx(p1x,(p1y - 1))!=Green)
               {
                 p1y--;
               }
-            if (ReadPx(p1x,(p1y - 1))==Orange)
-              {
-              }
-            else
+            if (ReadPx(p1x,(p1y - 1))!=Orange)
               {
                 p1y--;
               }
-               if (ReadPx(p1x,(p1y - 1))==Violet)
-              {
-              }
-            else
+               if (ReadPx(p1x,(p1y - 1))!=Violet)
               {
                 p1y--;
               }
-               if (ReadPx(p1x,(p1y - 1))==Blue)
-              {
+               if (ReadPx(p1x,(p1y - 1))!=Blue)
+             {
+                p1y--;
               }
-            else
+                if (ReadPx(p1x,(p1y - 1))!=Yellow)
               {
                 p1y--;
               }
-            }
-         else
-            {
-            }
-      }
-      drawPlayer();
+      
       DisplaySlate();
+          }
+  }
    }
+
     if (direction == 270)
     {
         if (p1x > 1)             // Corrects for out of bounds
           {
-            if (ReadPx((p1x - 1),p1y)==Green)
-              {
-              }
-            else
+            if (ReadPx((p1x - 1),p1y)!=Green)
               {
                 p1x--;
               }
-            if (ReadPx((p1x - 1),p1y)==Orange)
-              {
-              }
-            else
+            if (ReadPx((p1x - 1),p1y)!=Orange)
               {
                 p1x--;
               }
-               if (ReadPx((p1x - 1),p1y)==Violet)
-              {
+               if (ReadPx((p1x - 1),p1y)!=Violet)
+             {
+                p1x--;
               }
-            else
+               if (ReadPx((p1x - 1),p1y)!=White)
               {
                 p1x--;
               }
-               if (ReadPx((p1x - 1),p1y)==Blue)
+              if (ReadPx((p1x - 1),p1y)==Blue)
               {
+                ClearSlate();
+                drawHome();
+                DisplaySlate();
               }
-            else
+              if (ReadPx((p1x - 1),p1y)==Yellow)
               {
-                p1x--;
+                ClearSlate();
+                drawLevelA();
+                DisplaySlate();
               }
-            }
-         else
-            {
-            }
       }
-      drawPlayer();
       DisplaySlate();
-      
+    }  
     if (direction == 90)
      {
         if (p1x < 7)             // Corrects for out of bounds
           {
-            if (ReadPx((p1x + 1),p1y)==Green)
-              {
+            if (ReadPx((p1x + 1),p1y)!=Green)
+             {
+                p1x++;
               }
-            else
+              
+              if (ReadPx((p1x + 1),p1y)!=Orange)
               {
                 p1x++;
               }
-            if (ReadPx((p1x + 1),p1y)==Orange)
-              {
-              }
-            else
+              
+              if (ReadPx((p1x + 1),p1y)!=Violet)
               {
                 p1x++;
               }
-               if (ReadPx((p1x + 1),p1y)==Violet)
-              {
-              }
-            else
+              
+              if (ReadPx((p1x + 1),p1y)!=White)
               {
                 p1x++;
               }
-               if (ReadPx((p1x + 1),p1y)==Blue)
+              
+              if (ReadPx((p1x + 1),p1y)==Blue)
               {
+                ClearSlate();
+                drawHome();
+                DisplaySlate();
               }
-            else
+              
+              if (ReadPx((p1x + 1),p1y)==Yellow)
               {
-                p1x++;
+                ClearSlate();
+                drawLevelA();
+                DisplaySlate();
               }
-              if (ReadPx((p1x + 1),p1y)==White)
-              {
-              }
-            else
-              {
-                p1x++;
-              }
-            }
-         else
-            {
-            }
       }
-      drawPlayer();
       DisplaySlate();
-   if (boolean homescreen = true)
-   {
-    if ((p1x == 7) && (p1y == 7))
-    drawLevelA();
-    DisplaySlate();
-   }
+     }
 }
+
 
 
