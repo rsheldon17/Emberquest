@@ -94,49 +94,173 @@ void updatePlayer()
     if (direction == 0)
     {
     if (boolean homescreen = true)
-    {
-      (p1y++);          // Moves Player up 1
-      if (p1y > 7)             // Corrects for out of bounds
       {
-        p1y = 8;
+        if (p1y < 7)             // Corrects for out of bounds
+          {
+            if (ReadPx(p1x,(p1y + 1))==Green)
+              {
+              }
+            else
+              {
+                p1y++;
+              }
+            if (ReadPx(p1x,(p1y + 1))==Orange)
+              {
+              }
+            else
+              {
+                p1y++;
+              }
+               if (ReadPx(p1x,(p1y + 1))==Violet)
+              {
+              }
+            else
+              {
+                p1y++;
+              }
+               if (ReadPx(p1x,(p1y + 1))==Blue)
+              {
+              }
+            else
+              {
+                p1y++;
+              }
+            }
+         else
+            {
+            }
+          }
+          drawPlayer();
+          DisplaySlate();
       }
-      drawPlayer();
-      DisplaySlate();
-    }
-    }
     if (direction == 180)
    {
     if (boolean homescreen = true)
     {
-      p1y--;          // Moves Player down 1
-      if (p1y < -1)            // Corrects for out of bounds
-      {
-        p1y = 0;
+        if (p1y > 1)             // Corrects for out of bounds
+          {
+            if (ReadPx(p1x,(p1y - 1))==Green)
+              {
+              }
+            else
+              {
+                p1y--;
+              }
+            if (ReadPx(p1x,(p1y - 1))==Orange)
+              {
+              }
+            else
+              {
+                p1y--;
+              }
+               if (ReadPx(p1x,(p1y - 1))==Violet)
+              {
+              }
+            else
+              {
+                p1y--;
+              }
+               if (ReadPx(p1x,(p1y - 1))==Blue)
+              {
+              }
+            else
+              {
+                p1y--;
+              }
+            }
+         else
+            {
+            }
       }
       drawPlayer();
       DisplaySlate();
-   }
    }
     if (direction == 270)
     {
-      p1x++;          // Moves Player right 1
-       if (p1x > 7)            // Corrects for out of bounds
-      {
-        p1x = 8;
+        if (p1x > 1)             // Corrects for out of bounds
+          {
+            if (ReadPx((p1x - 1),p1y)==Green)
+              {
+              }
+            else
+              {
+                p1x--;
+              }
+            if (ReadPx((p1x - 1),p1y)==Orange)
+              {
+              }
+            else
+              {
+                p1x--;
+              }
+               if (ReadPx((p1x - 1),p1y)==Violet)
+              {
+              }
+            else
+              {
+                p1x--;
+              }
+               if (ReadPx((p1x - 1),p1y)==Blue)
+              {
+              }
+            else
+              {
+                p1x--;
+              }
+            }
+         else
+            {
+            }
       }
       drawPlayer();
       DisplaySlate();
-    }
+      
     if (direction == 90)
-   {
-      p1x--;          // Moves Player left 1
-       if (p1x < -1)           // Corrects for out of bounds
-      {
-        p1x = 0;
-      } 
+     {
+        if (p1x < 7)             // Corrects for out of bounds
+          {
+            if (ReadPx((p1x + 1),p1y)==Green)
+              {
+              }
+            else
+              {
+                p1x++;
+              }
+            if (ReadPx((p1x + 1),p1y)==Orange)
+              {
+              }
+            else
+              {
+                p1x++;
+              }
+               if (ReadPx((p1x + 1),p1y)==Violet)
+              {
+              }
+            else
+              {
+                p1x++;
+              }
+               if (ReadPx((p1x + 1),p1y)==Blue)
+              {
+              }
+            else
+              {
+                p1x++;
+              }
+              if (ReadPx((p1x + 1),p1y)==White)
+              {
+              }
+            else
+              {
+                p1x++;
+              }
+            }
+         else
+            {
+            }
+      }
       drawPlayer();
       DisplaySlate();
-   } 
    if (boolean homescreen = true)
    {
     if ((p1x == 7) && (p1y == 7))
