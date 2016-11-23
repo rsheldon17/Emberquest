@@ -1,9 +1,10 @@
 
 #include <MeggyJrSimple.h>
 boolean homescreen = true;
-int direction = 0;
 int p1y = 1;
 int p1x = 0;
+int obs1y = 1;
+int obs1x = 0;
 void setup() 
  {
     MeggyJrSimpleSetup();
@@ -12,9 +13,48 @@ void setup()
 void loop() 
  {
   drawHome();
-  drawPlayer();
-  updatePlayer();
-  DisplaySlate();
+  CheckButtonsPress();
+  if(Button_Up)
+  {
+    if (homescreen == true) // Up button function in homescreen causes player to move up one, which is different from its function in the maze, as that is a side view and causes the player to jump
+        {
+          if (p1y < 8)    // Out of bounds
+            {
+              p1y = p1y +1;
+            }
+        }
+  }
+           
+  if(Button_Down)
+  {
+        if (homescreen == true)
+          {
+             if (p1y > 0) 
+                {
+                  p1y--;
+               }
+          }
+     }
+
+  if(Button_Left)
+  {
+    if (p1x > 0)             // Corrects for out of bounds
+      {
+        p1x--;
+      }
+  }
+      
+  if(Button_Right)
+     {
+        if (p1x < 8)             // Corrects for out of bounds
+          {
+          p1x++;  
+      }
+     }
+ drawPlayer();
+ DisplaySlate();
+ delay(100);
+ ClearSlate();
  }
 
 void drawHome() 
@@ -35,7 +75,6 @@ void drawHome()
     DrawPx(0,7,Yellow);
     DrawPx(7,0,Yellow);
     DrawPx(7,7,Yellow);
-    DisplaySlate();
     homescreen = true;
  }
   
@@ -60,174 +99,14 @@ void drawLevelA()
     DrawPx(3,6,White);
     DrawPx(4,6,White);
     DrawPx(0,7,Blue);
-    DisplaySlate();
     homescreen = false;
  }
 
 void drawPlayer()
-{
-  DrawPx(p1x,p1y,Red);
-  updatePlayer();
-  DisplaySlate();
-}
-void updatePlayer()
-{
   {
-    CheckButtonsPress();
-    if(Button_Up)
-      direction = 0;
-    if(Button_Down)
-      direction = 180;
-    if(Button_Left)
-      direction = 270;  
-    if(Button_Right)
-      direction = 90;
+    DrawPx(p1x,p1y,Red);
   }
   
-    if (direction == 0)
-    {
-    if (homescreen == true)
-      {
-        if (p1y < 7)             // Corrects for out of bounds
-          {
-            if (ReadPx(p1x,(p1y + 1))!=Green)
-              {
-                p1y++;
-              }
-            if (ReadPx(p1x,(p1y + 1))!=Orange)
-              {
-                p1y++;
-              }
-               if (ReadPx(p1x,(p1y + 1))!=Violet)
-              {
-                p1y++;
-              }
-               if (ReadPx(p1x,(p1y + 1))!=Blue)
-              {
-                p1y++;
-              }
-                if (ReadPx(p1x,(p1y + 1))==Yellow)
-              {
-                ClearSlate();
-                drawLevelA();
-                drawPlayer();
-                p1x = 1;
-                p1y = 1;
-                DisplaySlate();
-              }
-            }
-          DisplaySlate();
-      }
-      }
-      
-    if (direction == 180)
-  {
-    if (homescreen == true)
-  {
-        if (p1y > 1)             // Corrects for out of bounds
-          {
-            if (ReadPx(p1x,(p1y - 1))!=Green)
-              {
-                p1y--;
-              }
-            if (ReadPx(p1x,(p1y - 1))!=Orange)
-              {
-                p1y--;
-              }
-               if (ReadPx(p1x,(p1y - 1))!=Violet)
-              {
-                p1y--;
-              }
-               if (ReadPx(p1x,(p1y - 1))!=Blue)
-             {
-                p1y--;
-              }
-                if (ReadPx(p1x,(p1y - 1))!=Yellow)
-              {
-                p1y--;
-              }
-      
-      DisplaySlate();
-          }
-  }
-   }
-
-    if (direction == 270)
-    {
-        if (p1x > 1)             // Corrects for out of bounds
-          {
-            if (ReadPx((p1x - 1),p1y)!=Green)
-              {
-                p1x--;
-              }
-            if (ReadPx((p1x - 1),p1y)!=Orange)
-              {
-                p1x--;
-              }
-               if (ReadPx((p1x - 1),p1y)!=Violet)
-             {
-                p1x--;
-              }
-               if (ReadPx((p1x - 1),p1y)!=White)
-              {
-                p1x--;
-              }
-              if (ReadPx((p1x - 1),p1y)==Blue)
-              {
-                ClearSlate();
-                drawHome();
-                DisplaySlate();
-              }
-              if (ReadPx((p1x - 1),p1y)==Yellow)
-              {
-                ClearSlate();
-                drawLevelA();
-                DisplaySlate();
-              }
-      }
-      DisplaySlate();
-    }  
-    if (direction == 90)
-     {
-        if (p1x < 7)             // Corrects for out of bounds
-          {
-            if (ReadPx((p1x + 1),p1y)!=Green)
-             {
-                p1x++;
-              }
-              
-              if (ReadPx((p1x + 1),p1y)!=Orange)
-              {
-                p1x++;
-              }
-              
-              if (ReadPx((p1x + 1),p1y)!=Violet)
-              {
-                p1x++;
-              }
-              
-              if (ReadPx((p1x + 1),p1y)!=White)
-              {
-                p1x++;
-              }
-              
-              if (ReadPx((p1x + 1),p1y)==Blue)
-              {
-                ClearSlate();
-                drawHome();
-                DisplaySlate();
-              }
-              
-              if (ReadPx((p1x + 1),p1y)==Yellow)
-              {
-                ClearSlate();
-                drawLevelA();
-                DisplaySlate();
-              }
-      }
-      DisplaySlate();
-     }
-}
 
 
 
